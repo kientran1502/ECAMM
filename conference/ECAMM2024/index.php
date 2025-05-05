@@ -17,45 +17,33 @@
 </head>
 
 <body data-spy="scroll" data-target="#site-nav">
-    <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <nav id="site-nav" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <div class="navbar-header">
+            <a class="navbar-brand" href="https://mscskeylab.hus.vnu.edu.vn/">
+                <img height="36" src="../../wp-content/uploads/2018/09/Logo.png" alt="Logo">
+                MSCS KeyLAB
+            </a>
 
-                <!-- logo -->
-                <div class="site-branding">
-                    <a class="logo" href="https://mscskeylab.hus.vnu.edu.vn/">
-                        <!-- logo image  -->
-                        <img height=36 src="../../wp-content/uploads/2018/09/Logo.png" alt="Logo">
-                        MSCS KeyLAB
-                    </a>
-                </div>
+            <!-- Nút toggle mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-items"
+                aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
-                    aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-            </div><!-- /.navbar-header -->
-
-            <div class="collapse navbar-collapse" id="navbar-items">
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- navigation menu -->
-                    <li><a data-scroll href="#about">Overview</a></li>
-                    <li><a data-scroll href="#goal">Goal</a></li>
-                    <li><a data-scroll href="#speakers">Speakers</a></li>
-                    <li><a data-scroll href="#committees">Committees</a></li>
-                    <!-- li><a data-scroll href="#abstract">Abstract</a></li -->
-                    <li><a data-scroll href="#schedule">Schedule</a></li>
-                    <li><a data-scroll href="#location">Venue</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#myModal">REGISTRATION</a></li>
-                    <li><a href="../../admin/login.php" class="">Admin</a></li>
+            <!-- Menu -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbar-items">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#goal">Goal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#speakers">Speakers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#committees">Committees</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#location">Venue</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRATION</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../admin/login.php">Admin</a></li>
                 </ul>
             </div>
-            
-        </div><!-- /.container -->
+        </div>
     </nav>
 
     <div id="myModal" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
@@ -124,8 +112,8 @@
                 </div>  
 
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-danger border-rounded me-3" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary border-rounded " data-dismiss="modal">Submit</button>
+                    <button type="button" class="btn btn-danger rounded me-3" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary rounded" data-bs-dismiss="modal">Submit</button>
                 </div>
 
             </div>
