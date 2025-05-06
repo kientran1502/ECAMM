@@ -17,10 +17,10 @@
 </head>
 
 <body data-spy="scroll" data-target="#site-nav">
-    <nav id="site-nav" class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav id="site-nav" class="navbar navbar-expand-lg navbar-dark fixed-top pt-4">
         <div class="container">
             <a class="navbar-brand" href="https://mscskeylab.hus.vnu.edu.vn/">
-                <img height="36" src="../../wp-content/uploads/2018/09/Logo.png" alt="Logo">
+                <img height="40px" src="../../wp-content/uploads/2018/09/Logo.png" alt="Logo">
                 MSCS KeyLAB
             </a>
 
@@ -33,28 +33,26 @@
             <!-- Menu -->
             <div class="collapse navbar-collapse justify-content-center" id="navbar-items">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#goal">Goal</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#speakers">Speakers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#committees">Committees</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#location">Venue</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRATION</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../admin/login.php">Admin</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#about">OVERVIEW</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#goal">GOAL</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#speakers">SPEAKERS</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#committees">COMMITTEES</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#schedule">SCHEDUAL</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#location">VENUE</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRATION</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="../../admin/login.php" target="_blank">ADMIN</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-
-                <div class="modal-header" style="padding: 1rem;">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h3 class="modal-title">REGISTRATION FORM</h3>
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4" id="exampleModalLabel">Registration form</h1>
+                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
                 <div class="modal-body">
                     <form id="registration-form" method="POST">
                         <div class="row">
@@ -62,60 +60,54 @@
                             <div class="col-md-12" id="registration-msg" style="display:none;">
                                 <div class="alert"></div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group border-rounded ">
-                                <label for="fname" class="form-label">Your Full Name:</label>
-                                    <input type="text" class="form-control mb-3 border-rounded " placeholder="Your Name" id="fname" name="fname"
-                                        required>
+
+                            <div class="col-md-6 col-sm-12">
+                                <div class="mb-3">
+                                    <label for="fname" class="form-label">Your Full Name:</label>
+                                    <input type="text" class="form-control rounded" placeholder="Your Name" id="fname" name="fname" required>
                                 </div>
 
-                                <div class="form-group border-rounded ">
-                                <label for="email" class="form-label">Email:</label>
-                                    <input type="email" class="form-control mb-3 border-rounded " placeholder="Email" id="email" name="email"
-                                        required>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email:</label>
+                                    <input type="email" class="form-control rounded" placeholder="Email" id="email" name="email" required>
                                 </div>
 
-                                <div class="form-group">
-                                <label for="cell" class="form-label">Phone:</label>
-                                    <input type="text" class="form-control mb-3 border-rounded " placeholder="Phone" id="cell" name="cell" required>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 ">
-                                <div class="form-group border-rounded ">
-                                <label for="affiliation" class="form-label">Affiliation:</label>
-                                    <input type="text" class="form-control mb-3 border-rounded " placeholder="Affiliation" id="affiliation"
-                                        name="affiliation" required>
-                                </div>
-
-                                <div class="form-group border-rounded ">
-                                <label for="address" class="form-label">Address:</label>
-                                    <input type="text" class="form-control mb-3 border-rounded " placeholder="Address" id="address" name="address"
-                                        required>
-                                </div>
-
-                                <div class="form-group border-rounded ">
-                                <label for="zip" class="form-label">Zip code:</label>
-                                    <input type="text" class="form-control mb-3 border-rounded " placeholder="Zip Code" id="zip" name="zip" required>
+                                <div class="mb-3">
+                                    <label for="cell" class="form-label">Phone:</label>
+                                    <input type="text" class="form-control rounded" placeholder="Phone" id="cell" name="cell" required>
                                 </div>
 
                             </div>
 
-                            <div class="col-md-12">
-                                <div class="">
-                                    <label for="abstract" class="form-label">Abstract:</label>
-                                    <textarea class="form-control mb-3" id="abstract" name="abstract" rows="3"></textarea>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="mb-3">
+                                    <label for="affiliation" class="form-label">Affiliation:</label>
+                                    <input type="text" class="form-control" placeholder="Affiliation" id="affiliation" name="affiliation" required>
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Address:</label>
+                                    <input type="text" class="form-control" placeholder="Address" id="address" name="address" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="zip" class="form-label">Zip code:</label>
+                                    <input type="text" class="form-control" placeholder="Zip Code" id="zip" name="zip" required>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="abstract" class="form-label">Abstract:</label>
+                                <textarea class="form-control" id="abstract" name="abstract" rows="3"></textarea>
                             </div>
                         </div>
-
-                </div>  
-
-                <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-danger rounded me-3" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary rounded" data-bs-dismiss="modal">Submit</button>
+                    </form>
                 </div>
-
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
@@ -982,7 +974,7 @@
         </div>
     </section>
 
-    <button id="backToTop" class="btn-top btn-primary">
+    <button id="backToTop" class="btn-top bg-primary">
         <img src="assets/images/icons/chevron-up.svg" alt="">
     </button>
 
@@ -1132,42 +1124,5 @@
     #dataTable td {
         min-width: 120px;
         padding: 10px;
-    }
-
-    .btn-close {
-        margin-top: 20px;
-        padding: 10px 20px;
-        cursor: pointer;
-        border: none;
-        background-color: #ff0000;
-        color: white;
-        border-radius: 5px;
-    }
-
-    .border-rounded  {
-        box-shadow: inset;
-        border-radius: 5px;
-        /* Border với góc bo tròn */
-    }
-
-    .mb-3{
-        margin-bottom: 1rem;
-    }
-
-    .d-flex {
-        display: flex;
-    }
-
-    .justify-content-center {
-        justify-content: center; /* Căn giữa các phần tử theo chiều ngang */
-    }
-
-    .me-3{
-        margin-right: 1rem;
-    }
-    .border-full  {
-        box-shadow: inset;
-        border-radius: 100%;
-        /* Border với góc bo tròn */
     }
 </style>

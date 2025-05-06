@@ -10,6 +10,7 @@
 
 
 <?php
+
 class adminlogin
 {
     private $db;
@@ -30,6 +31,7 @@ class adminlogin
         if(empty($adminUser) || empty($adminPass)){
             $this->fm->alert('error', 'User or Password are empty');
         }
+        
         else{
             $query = "SELECT * FROM tbl_admin WHERE adminUser = '$adminUser' and adminPass = '$adminPass' limit 1";
             $result = $this->db->select($query);
