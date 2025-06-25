@@ -14,14 +14,46 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        .scheduleContent table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        .scheduleContent th,
+        .scheduleContent td {
+            border: none !important;
+        }
+
+        .scheduleContent td {
+            padding-right: 5rem;
+        }
+
+        .scheduleContent table tr>td:first-child {
+            width: 20%;
+        }
+
+        .scheduleContent table tr>td:nth-child(2) {
+            width: 80%;
+        }
+
+        @media (max-width: 768px) {
+            #navbar-items{
+                background-color: black;
+                padding: 1.5rem;
+                opacity: 0.8;
+            }
+        }
+    </style>
 </head>
 
-<body data-spy="scroll" data-target="#site-nav">
+<body data-bs-spy="scroll" data-bs-target="#site-nav" data-bs-offset="100" tabindex="0">
     <nav id="site-nav" class="navbar navbar-expand-lg navbar-dark fixed-top pt-4">
-        <div class="container">
-            <a class="navbar-brand" href="https://mscskeylab.hus.vnu.edu.vn/">
-                <img height="40px" src="../../wp-content/uploads/2018/09/Logo.png" alt="Logo">
-                MSCS KeyLAB
+        <div class="container d-flex">
+            <a class="navbar-brand d-flex align-items-center" href="https://mscskeylab.hus.vnu.edu.vn/" target="_blank">
+                <div id="logoHeader"></div>
+                <span id="sologen" class="align-items-center d-flex">MSCS KEYLAB</span>
             </a>
 
             <!-- Nút toggle mobile -->
@@ -33,20 +65,20 @@
             <!-- Menu -->
             <div class="collapse navbar-collapse justify-content-center" id="navbar-items">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link text-white" href="#about">OVERVIEW</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#goal">GOAL</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#speakers">SPEAKERS</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#committees">COMMITTEES</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#schedule">SCHEDUAL</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#location">VENUE</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRATION</a></li>
+                    <li class="nav-item"><a class="nav-link text-white me-2" href="#about">OVERVIEW</a></li>
+                    <li class="nav-item"><a class="nav-link text-white me-2" href="#goal">GOAL</a></li>
+                    <li class="nav-item"><a class="nav-link text-white me-2" href="#speakers">SPEAKERS</a></li>
+                    <li class="nav-item"><a class="nav-link text-white me-2" href="#committees">COMMITTEES</a></li>
+                    <li class="nav-item"><a class="nav-link text-white me-2" href="#schedule">SCHEDULE</a></li>
+                    <li class="nav-item"><a class="nav-link text-white me-2" href="#location">VENUE</a></li>
+                    <li class="nav-item"><a class="nav-link text-white me-2" href="#" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRATION</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="../../admin/login.php" target="_blank">ADMIN</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-backdrop="static">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -54,59 +86,61 @@
                     <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="registration-form" method="POST">
-                        <div class="row">
+                    <form id="registration-form" method="POST" name="registration-form">
+                        <div class="row mb-3">
 
                             <div class="col-md-12" id="registration-msg" style="display:none;">
                                 <div class="alert"></div>
                             </div>
 
                             <div class="col-md-6 col-sm-12">
+
                                 <div class="mb-3">
                                     <label for="fname" class="form-label">Your Full Name:</label>
-                                    <input type="text" class="form-control rounded" placeholder="Your Name" id="fname" name="fname" required>
+                                    <input type="text" class="form-control rounded" placeholder="Enter Your Name" id="fname" name="fname" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email:</label>
-                                    <input type="email" class="form-control rounded" placeholder="Email" id="email" name="email" required>
+                                    <input type="email" class="form-control rounded" placeholder="Enter Email" id="email" name="email" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="cell" class="form-label">Phone:</label>
-                                    <input type="text" class="form-control rounded" placeholder="Phone" id="cell" name="cell" required>
+                                    <input type="text" class="form-control rounded" placeholder="Enter Phone" id="cell" name="cell" required>
                                 </div>
+
+                                <input type="hidden" class="form-control rounded" name="is_register">
 
                             </div>
 
                             <div class="col-md-6 col-sm-12">
+
                                 <div class="mb-3">
                                     <label for="affiliation" class="form-label">Affiliation:</label>
-                                    <input type="text" class="form-control" placeholder="Affiliation" id="affiliation" name="affiliation" required>
+                                    <input type="text" class="form-control rounded" placeholder="Enter Affiliation" id="affiliation" name="affiliation" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Address:</label>
-                                    <input type="text" class="form-control" placeholder="Address" id="address" name="address" required>
+                                    <input type="text" class="form-control rounded" placeholder="Enter Address" id="address" name="address" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="zip" class="form-label">Zip code:</label>
-                                    <input type="text" class="form-control" placeholder="Zip Code" id="zip" name="zip" required>
+                                    <input type="text" class="form-control rounded" placeholder="Enter Zip Code" id="zip" name="zip" required>
                                 </div>
 
                             </div>
 
-                            <div class="col-md-12 mb-3">
-                                <label for="abstract" class="form-label">Abstract:</label>
-                                <textarea class="form-control" id="abstract" name="abstract" rows="3"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="mx-auto pt-3">
+                                <button type="button" class="btn btn-danger rounded me-2 px-4" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" name="submit-register" class="btn btn-secondary rounded px-4">Submit</button>
                             </div>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -114,23 +148,12 @@
 
 
     <header id="site-header" class="site-header valign-center">
-        <div class="intro">
 
-            <h2>October 14<sup>th</sup>-16<sup>th</sup>, 2024</h2>
-            <br>
-            <br>
-            <h2>The 4<sup>th</sup> KeyLAB international conference</h2>
-            <h1>Experimental and Computational approaches in Molecular Medicine</h1>
-            <h1>(ECAMM-2024)</h1>
-            <br>
-            <p>VNU Key Laboratory for Multiscale Simulation of Complex Systems</p>
-            <p>University of Science, Vietnam National University - Hanoi</p>
-            <!--            <br>
-            <a class="btn btn-white" data-scroll href="#registration">Register Now</a>
-            <br>
-            <p>Online registration for the conference is open from 1 April 2024 to 30 August 2024</p>
-	    <p>Abstract submission deadline is 30 September 2024</p>
--->
+        <div id="backgroundHeader">
+
+        </div>
+
+        <div class="intro" id="headerContent">
 
         </div>
     </header>
@@ -141,52 +164,15 @@
                 <div class="col-sm-12">
 
                     <h3 class="section-title">Overview</h3>
-                    <p>
-                        The 4th conference on <i>Experimental and computational approaches in Molecular Medicine</i>
-                        (ECAMM-2024)
-                        will be held from 14th to 16th October 2024 in Hanoi, Vietnam.
-                    </p>
-                    <p>
-                        The ECAMM-2024 is organized by the VNU Key Laboratory for Multiscale Simulation of Complex
-                        Systems.
-                        It is sponsored by the VNU University of Science and
-                        the Institute for Computational Biomedicine (INM-9/IAS-5), Forschungszentrum Jülich GmbH.
-                    </p>
-                    <p>
-                        The ECAMM has been a biannual activity of the Key Laboratory since 2016.
-                        The ECAMM is aimed to be an international conference for scientists in Vietnam, in the region
-                        and worldwide.
-                        Our mission is to foster scientific exchanges and to promote a high-standard level of research
-                        and education in Vietnam and foreign experts
-                        in the field of molecular medicine.
-                    </p>
-                    <p>
-                        The conference will cover topics of theoretical, computational, and experimental
-                        multidisciplinary science in the following fields:
-                    <ul>
-                        <li>Novel drug design strategies</li>
-                        <li>Neuromedicine</li>
-                        <li>Cancer research</li>
-                        <li>Viral diseases</li>
-                        <li>Materials Informatics in life science</li>
-                        <li>Machine learning in molecular science</li>
-                    </ul>
-                    </p>
-                    <p>
-                        We are looking forward to welcoming you at the conference.
-                    </p>
-                    <p>
-                        The Organizing Committee.
-                    </p>
+                    <div id="overviewContent">
+                    </div>
 
-                    <figure>
-                        <img class="img-responsive" height=400 alt=""
-                            src="../../wp-content/uploads/2024/02/6vw1_resid_113_retake.png">
+                    <figure id="overviewImage">
                     </figure>
 
-                </div><!-- /.col-sm-12 -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
+                </div>
+            </div>
+        </div>
     </section>
 
 
@@ -196,93 +182,14 @@
                 <div class="col-sm-12">
 
                     <h3 class="section-title multiple-title">Our goals</h3>
+                    <div id="goalContent">
 
-                    <p>
-                        Computational biomedicine is at its infancy in Vietnam,
-                        yet top Vietnamese theoretical physicists, chemists, computer scientists can greatly contribute
-                        to
-                        the development of powerful tools for contributing in solving relevant problems
-                        for the human health.
-                    </p>
-                    <p>
-                        The KeyLab for Multiscale Simulations of Complex Systems offers a unique chance to do
-                        outstanding research in neuromedicine,
-                        with unique perspectives of a high level career in science.
-                        The research is strongly interdisciplinary, with colleagues from Germany (IAS-5/INM-9 at
-                        Forschungzentrum Jülich)
-                        and UK (Culham Center for Fusion Energy at Abingdon) bringing in their expertise to the
-                        projects.
-                        Students and postdocs exchanges with Juelich will further foster the collaborations.
-                    </p>
-                    <p>
-                        In this context, the biannual ECAMM meeting aims to offer a platform for scientists to present
-                        their research results,
-                        learn new methods, exchange ideas, make network and cooperate … in a stimulating and friendly
-                        environment.
-                    </p>
-                    <p>
-                        The ECAMM covers different topics of molecular medicine, materials and life sciences …
-                        encompasing theoretical, computational and experimental oriented research.
-                    </p>
-                    <p>
-                        Previous ECAMM conferences organized by the KeyLAB:
-                    <ul class="list-arrow-right">
-                        <li>
-                            September 22nd - 29th, 2019. The 3<sup>rd</sup> KeyLAB international conference:
-                            the "<strong>Second training course and international workshop on multiscale biophysics
-                                computations</strong>", Hanoi, Vietnam.
-                        </li>
-                        <li>
-                            June 27th - 29th, 2018. The 2<sup>nd</sup> KeyLAB international conference:
-                            "<strong>Recent Computational and Experimental advances in Molecular Medicine</strong>",
-                            organized as a self-contained section in collaboration with the BME7 conference, Ho Chi
-                            Minh City, Vietnam.
-                        </li>
-                        <li>
-                            June 30th - July 01st, 2016. The 1<sup>st</sup> KeyLAB international conference:
-                            The "<strong>2016 International Workshop and Summer school in Physics – Biology –
-                                Pharmacy: Molecular Dynamics in Drug Design</strong>", Hanoi, Vietnam.
-                            The conferene is one of several scientific activities to inaugurate the establishment of
-                            the MSCS KeyLAB.
-                        </li>
-                    </ul>
-                    </p>
-
-                </div><!-- /.col-sm-12 -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </section>
-
-    <!-- section id="facts" class="section bg-image-1 facts text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-
-                    <i class="ion-ios-calendar"></i>
-                    <h3>2024<br>October 14-16</h3>
-
-                </div>
-                <div class="col-sm-3">
-
-                    <i class="ion-ios-location"></i>
-                    <h3>Hanoi<br>Vietnam</h3>
-
-                </div>
-                <div class="col-sm-3">
-
-                    <i class="ion-pricetags"></i>
-                    <h3>100<br>Participants</h3>
-
-                </div>
-                <div class="col-sm-3">
-
-                    <i class="ion-speakerphone"></i>
-                    <h3>20<br>Speakers</h3>
+                    </div>
 
                 </div>
             </div>
         </div>
-    </section-->
+    </section>
 
     <section id="speakers" class="section speakers">
         <div class="container">
@@ -294,105 +201,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <ul>
-                        <li>
-                            Prof. <strong>Vincenzo Carnevale</strong>, Temple University,
-                            1801 N. Broad Street,
-                            Philadelphia, PA 19122 (USA).
-                        </li>
-                        <li>
-                            Prof. <strong>Ran Friedman</strong>,
-                            Linnaeus University,
-                            Department of Chemistry and Biomedical Sciences,
-                            391 82 Kalmar, (Sweden). <!--
-			    <a href="http://lnu.se/en/ccbg">website</a> -->
-                        </li>
-                        <li>
-                            Prof. <strong>Giuseppe Legname</strong>,
-                            Neurodegenerative diseases,
-                            Prion Biology Laboratory,
-                            SISSA - Scuola Internazionale Superiore di Studi Avanzati,
-                            Via Bonomea, 265,
-                            34136 Trieste,
-                            (Italy)
-                        </li>
-                        <li>
-                            Prof. <strong>Riccardo Capelli</strong>,
-                            University of Milan (Italy)
-                        </li>
-                        <!-- li>
-                            Prof. <strong>Yaakov (Koby) Levy</strong>,
-                            Department of Structural Biology,
-                            Weizmann Institute of Science,
-			    Rehovot, (Israel). <em>(cancelled)</em>
-			    <a href="http://www.weizmann.ac.il/Structural_Biology/Levy/">website</a>.
-                        </li -->
-                        <li>
-                            Prof. <strong>Ellinor Haglund</strong>,
-                            University of Hawai‘i at Mānoa (USA)
-                        </li>
-                        <li>
-                            Prof. <strong>Alejandro Giorgetti</strong>,
-                            University of Verona
-                            ITALY
-                            Institute for Neuroscience and Medicine,
-                            Computational Biomedicine (INM-9),
-                            Forschungszentrum Jülich GmbH,
-                            VNU-KeyLab Member,
-                            Wilhelm-Johnen-Straße,
-                            52428 Jülich,
-                            (GERMANY)
-                        </li>
-                        <li>
-                            Prof. <strong>Giulia Rossetti</strong>,
-                            Institute for Neuroscience and Medicine,
-                            Computational Biomedicine (INM-9),
-                            Forschungszentrum Jülich,
-                            VNU-KeyLab member,
-                            Wilhelm-Johnen-Straße,
-                            52428 Jülich,
-                            (GERMANY)
-                        </li>
-                        <li>
-                            Prof. <strong>Tran Phuoc Duy</strong>,
-                            Tokyo Institute of Technology,
-                            School of Life Science and Technology (Japan)
-                        </li>
-                        <li>
-                            Prof. <strong>Giorgio Colombo</strong>, University of Pavia (Italy)
-                        </li>
-                        <!--li>
-                            Prof. <strong>Mai Suan Ly</strong>,
-                            Institute of Physics, Polish Academy of Sciences, Al. Lonikow 32/46, 02-668 Warsaw, (Poland)
-			            <em>(cancelled)
-                        </li -->
-                        <li>Prof. <strong>Phuong Nguyen</strong>, Institute de Biologie Physico-Chimique, Paris (France)
-                        </li>
-                        <li> Prof. <strong>Francesco Musiani</strong>, University of Bologna (Italy)
-                        </li>
-                        <li>
-                            Prof. <strong>Paolo Carloni</strong>, Forschungszentrum Jülich &amp; RWTH Aachen
-                            University, Germany
-                        </li>
-                        <!-- li>
-                            Prof. <strong>Nguyen Manh-Duc</strong>, Culham Centre for Fusion Energy, (United Kingdom)
-                        </li -->
-                        <li>
-                            Prof. <strong>Jer-Lai Kuo</strong>, Academia Sinica (Taiwan)
-                        </li>
-                        <li>
-                            Prof. <strong>Ke Zuo</strong>, Chongqing University of Arts and Sciences, Chongqing (China)
-                        </li>
-                        <li>
-                            Prof. <strong>Adam Sieradzan</strong>, University of Gdańsk (Poland)
-                        </li>
-                        <li>
-                            Prof. <strong>Francesca Spyrakis</strong>, University of Turin (Italy)
-                        </li>
-                        <li> Prof. <strong>Shozeb Haider</strong>, University College London (UK)
-                        </li>
-                    </ul>
+                <div class="col-md-12" id="speakersContent">
+
                 </div>
             </div>
         </div>
@@ -408,209 +218,11 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
+            <div class="" id="committeesContent">
 
-                    <h4 class="section-title">Scientific Committee</h4>
-
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="speaker">
-
-                        <figure>
-                            <img height=256 alt="" class="img-responsive center-block"
-                                src="../../wp-content/uploads/2024/02/PCarloni.png">
-                        </figure>
-
-                        <h4>Paolo Carloni</h4>
-
-                        <p>Professor <br>Forschungszentrum Jülich &amp; RWTH Aachen University, Germany
-                        </p>
-
-                    </div><!-- /.speaker -->
-                </div><!-- /.col-md-4 -->
-
-                <div class="col-md-3">
-                    <div class="speaker">
-
-                        <figure>
-                            <img height=256 alt="" class="img-responsive center-block"
-                                src="../../wp-content/uploads/2024/02/NguyenTheToan.png">
-                        </figure>
-
-                        <h4>Toan T. Nguyen</h4>
-
-                        <p>Professor<br>University of Science, Vietnam National University</p>
-
-                    </div><!-- /.speaker -->
-                </div><!-- /.col-md-4 -->
-
-                <div class="col-md-3">
-                    <div class="speaker">
-
-                        <figure>
-                            <img height=256 alt="" class="img-responsive center-block"
-                                src="../../wp-content/uploads/2024/02/NguyenManhDuc.png">
-                        </figure>
-
-                        <h4>Nguyen Manh Duc</h4>
-
-                        <p>Professor<br>Culham Centre for Fusion Energy, United Kingdom</p>
-
-                    </div><!-- /.speaker -->
-                </div><!-- /.col-md-4 -->
-
-                <div class="col-md-3">
-                    <div class="speaker">
-
-                        <figure>
-                            <img height=256 alt="" class="img-responsive center-block"
-                                src="../../wp-content/uploads/2024/02/li.jpg">
-                        </figure>
-
-                        <h4>Mai Suan Ly</h4>
-
-                        <p>Professor<br>Institute of Physics, Poland</p>
-
-                    </div><!-- /.speaker -->
-                </div><!-- /.col-md-4 -->
-            </div><!-- /.row -->
-
-            <div class="row">
-                <div class="col-md-12">
-
-                    <h4 class="section-title">Secretariat</h4>
-
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
-
-                    <div class="speaker">
-
-                        <figure>
-                            <img height=256 alt="" class="img-responsive center-block"
-                                src="../../wp-content/uploads/2024/02/Annachiara.png">
-                        </figure>
-
-                        <h4>Annachiara Berra-Krichel</h4>
-
-                        <p>Forschungszentrum Jülich</p>
-
-                    </div>
-                </div>
-                <div class="col-md-3">
-
-                    <div class="speaker">
-
-                        <figure>
-                            <img height=256 alt="" class="img-responsive center-block"
-                                src="../../wp-content/uploads/2024/02/094.jpg">
-                        </figure>
-
-                        <h4>DO Thi Ngoc</h4>
-
-                        <p>University of Science, Vietnam National University</p>
-
-                    </div>
-                </div>
             </div>
         </div>
     </section>
-
-
-    <!-- <section id="registration" class="section registration">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="section-title">Registration</h3>
-                </div>
-            </div>
-
-            <form id="registration-form" method="POST">
-                <div class="row">
-
-                    <div class="col-md-12" id="registration-msg" style="display:none;">
-                        <div class="alert"></div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control mb-3 border-rounded " placeholder="First Name" id="fname" name="fname"
-                                required>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control mb-3 border-rounded " placeholder="Last Name" id="lname" name="lname"
-                                required>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="email" class="form-control mb-3 border-rounded " placeholder="Email" id="email" name="email"
-                                required>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control mb-3 border-rounded " placeholder="Phone" id="cell" name="cell" required>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control mb-3 border-rounded " placeholder="Affiliation" id="affiliation"
-                                name="affiliation" required>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control mb-3 border-rounded " placeholder="Address" id="address" name="address"
-                                required>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control mb-3 border-rounded " placeholder="Zip Code" id="zip" name="zip" required>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="text-center mt20">
-                    <button type="submit" class="btn btn-black" id="registration-submit-btn">Submit</button>
-                </div>
-            </form>
-        </div>
-    </section> -->
-
-    <!-- <section id="abstract" class="section bg-image-1 contribution">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="text-uppercase mt0 font-400">Abstract Submission</h3>
-
-                    <p>
-                        Note that the participant who submits the abstract must be the presenter of the abstract at the
-                        conference/workshop.
-                        <br>
-                        The deadline for abstract submission is 30 September 2024.
-                        <br>
-                        Please contact our Secretariat for any problem.
-                    </p>
-                    <p>
-                        POSTER: Please prepare your poster as one page of size A0 (841 mm x 1189 mm) in portrait
-                        (vertical) mode.
-                        <br>
-                        ORAL PRESENTATION: Please prepare your talk for a duration of 25 min including time for
-                        discussion.
-                        <br>
-                        INVITED TALK: Please prepare your talk for a duration of 40 min including time for discussion.
-                    </p>
-
-                    <a class="btn btn-white" href="#">Submit abstract</a>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <section id="schedule" class="section schedule">
         <div class="container">
@@ -619,356 +231,25 @@
                     <h3 class="section-title">Schedule</h3>
                 </div>
             </div>
-            <!--
-	<div class="row">
-                <div class="col-md-12">
-    <section id="location" class="section location">
+            <div class="scheduleContent" id="scheduleContent">
 
-        <div class="container">
--->
-            <div class="row">
-                <div class="col-sm-12">
-                    <h4>Monday, October 14th (Room 418, Building T1)</h4>
-                </div>
-                <div class="col-sm-3">
-                    08:00-08:30
-                </div>
-                <div class="col-sm-9">
-                    Shuttle from Hanoi Tirant Hotel to VNU University of Science
-                </div>
-                <div class="col-sm-3">
-                    08:45-09:00
-                </div>
-                <div class="col-sm-9">
-                    Welcome and Introduction to the KeyLAB
-                </div>
-                <div class="col-sm-3">
-                    <strong>Section 1:</strong>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Chair: Prof. Paolo Carloni</strong>
-                </div>
-                <div class="col-sm-3">
-                    09:00-09:45
-                </div>
-                <div class="col-sm-9">
-                    <strong>Paolo Carloni</strong><br>
-                    Forschungszentrüm Jülich (Germany)<br>
-                    <em>Multi-scale simulations of membrane proteins</em>
-                    <!--
-			<strong>Yaakov Levy</strong><br>,
-			Department of Structural Biology, Weizmann Institute of Science, Rehovot, (Israel)<br>
-
-			Center for Innovative Materials and Architectures, Ho Chi Minh City, Vietnam<br>
-			<em>Design and Modification of Porous Nanomaterials as Drug Carriers in Cancer Therapy</em>
--->
-                </div>
-                <div class="col-sm-3">
-                    09:45-10:30<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Ellinor Haglund</strong><br>
-                    University of Hawai‘i at Mānoa (USA)<br>
-                    <em>Pierced Lasso Topologies: Folding, Function, and Therapeutics Potential</em>
-                </div>
-                <div class="col-sm-3">
-                    10:30-11:00<br>
-                </div>
-                <div class="col-sm-9">
-                    Coffee break<br>
-                </div>
-                <div class="col-sm-3">
-                    11:00-11:45<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Giulia Rossetti</strong><br>
-                    Forschungszentrüm Jülich (Germany)<br>
-                    <em>Understanding the role of membrane in protein assembly and pharmacology</em>
-                </div>
-                <div class="col-sm-3">
-                    11:45-12:30<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Giuseppe Legname</strong><br>
-                    SISSA/ISAS, Trieste (Italy)</br>
-                    <em>A novel mechanism of protein aggregates clearance in neurodegenerative diseases</em>
-                </div>
-                <div class="col-sm-3">
-                    12:30-14:00<br>
-                </div>
-                <div class="col-sm-9">
-                    Lunch<br>
-                </div>
-                <div class="col-sm-3">
-                    <strong>Section 2:</strong><br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Chair: Prof. Paolo Carloni</strong><br>
-                </div>
-                <div class="col-sm-3">
-                    14:00-14:45<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Riccardo Capelli</strong><br>
-                    University of Milan (Italy)<br>
-                    <em>A Structure-based approach to protein-ligand binding thermodynamics and kinetics</em>
-                </div>
-                <div class="col-sm-3">
-                    14:45-15:30<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Alejandro Giorgetti</strong><br>
-                    University of Verona (Italy)<br>
-                    <em>Enhancing Disease and Drug Models through Structural Systems Biology</em>
-                </div>
-                <div class="col-sm-3">
-                    15:30-16:00<br>
-                </div>
-                <div class="col-sm-9">
-                    Coffee Break<br>
-                </div>
-                <div class="col-sm-3">
-                    16:00-16:45<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Jer-Lai Kuo</strong><br>
-                    Academia Sinica (Taiwan)<br>
-                    <em>Efficient first-principles exploration on the physical and chemical space of peptides and saccharides enabled by neural network potentials</em>
-                </div>
-                <div class="col-sm-3">
-                    16:45-17:30<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Tran Phuoc Duy</strong><br>
-                    Tokio Insitute of Technology (Japan)<br>
-                    <em>Signal Transduction in G-protein Coupled Receptors Class A and Class C</em>
-                </div>
-                <div class="col-sm-3">
-                    17:30-18:15<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Giorgio Colombo</strong><br>
-                    University of Pavia (Italy)<br>
-                    <em>Dynamics and Energy in Protein Recognition and Functional Mechanisms</em>
-                </div>
-                <div class="col-sm-3">
-                    19:00-20:30<br>
-                </div>
-                <div class="col-sm-9">
-                    Welcome Dinner (by invitations, location TBA) <br>
-                </div>
-                <div class="col-sm-3">
-                    20:30-21:00
-                </div>
-                <div class="col-sm-9">
-                    Shuttle from Restaurant to Hanoi Tirant Hotel
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <h4>Tuesday, October 15th (Room 401, Building T1)</h4>
-                </div>
-                <div class="col-sm-3">
-                    08:15-08:45
-                </div>
-                <div class="col-sm-9">
-                    Shuttle from Hanoi Tirant Hotel to VNU University of Science
-                </div>
-                <div class="col-sm-3">
-                    <strong>Section 3:</strong><br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Chair: Prof. Toan Nguyen</strong><br>
-                </div>
-                <div class="col-sm-3">
-                    09:00-09:45<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Vincenzo Carnevale</strong><br>
-                    Temple University, Philadelphia (USA)<br>
-                    <em>TBA</em>
-                </div>
-                <div class="col-sm-3">
-                    09:45-10:30<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Mai Ngoc Xuan Dat</strong><br>
-                    Center for Innovative Materials and Architectures, Ho Chi Minh City, Vietnam<br>
-                    <em>Design and Modification of Porous Nanomaterials as Drug Carriers in Cancer Therapy</em>
-                </div>
-                <div class="col-sm-3">
-                    10:30-11:00<br>
-                </div>
-                <div class="col-sm-9">
-                    Coffee break<br>
-                </div>
-                <div class="col-sm-3">
-                    11:00-11:45<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Emiliano Ippoliti</strong><br>
-                    Forschungszentrüm Jülich (Germany)<br>
-                    <em>Exploring new technologies for Molecular Dynamics</em>
-                </div>
-                <div class="col-sm-3">
-                    11:45-12:30<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Phuong Nguyen</strong><br>
-                    Institute de Biologie Physico-Chimique, Paris (France)<br>
-                    <em>TBA</em>
-                </div>
-                <div class="col-sm-3">
-                    12:30-14:00<br>
-                </div>
-                <div class="col-sm-9">
-                    Lunch<br>
-                </div>
-                <div class="col-sm-3">
-                    <strong>Section 4:</strong><br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Chair: Prof. Duc Nguyen</strong><br>
-                </div>
-                <div class="col-sm-3">
-                    14:00-14:45<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Francesco Musiani</strong><br>
-                    University of Bologna (Italy)<br>
-                    <em>Nickel trafficking in urease activation: latest results</em>
-                    <!-- <em>Studies of the effect of certain pathogenic variants causing lever causing hereditary optic neuropathy  on respiratory complex function and inhibition</em> -->
-                </div>
-                <div class="col-sm-3">
-                    14:45-15:30<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Ke Zuo</strong><br>
-                    Chongqing University of Arts and Sciences, Chongqing (China)<br>
-                    <em>NEET proteins: from electronic properties to drug design</em>
-                </div>
-                <div class="col-sm-3">
-                    15:30-16:15<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Adam Sieradzan</strong><br>
-                    University of Gdańsk (Poland)<br>
-                    <em>The unified coarse-grained model</em>
-                </div>
-                <div class="col-sm-3">
-                    16:15-16:45<br>
-                </div>
-                <div class="col-sm-9">
-                    Coffee Break<br>
-                </div>
-                <div class="col-sm-3">
-                    16:45-17:30<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Francesca Spyrakis</strong><br>
-                    University of Turin (Italy)<br>
-                    <em>Design of novel NLRP3 allosteric inhibitors to fight neuroinflammation and neurodegeneration</em>
-                </div>
-                <div class="col-sm-3">
-                    17:30-18:15<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Shozeb Haider</strong><br>
-                    University College London (UK)<br>
-                    <!-- em>Enhanced Sampling of class A Beta-lactamases</em -->
-                    <em>Non-Equilibrium Dynamics of SOAT enzymes</em>
-                </div>
-                <div class="col-sm-3">
-                    18:45-20:30<br>
-                </div>
-                <div class="col-sm-9">
-                    Gala Dinner (HUS Canteen, VNU University of Science)
-                </div>
-                <div class="col-sm-3">
-                    20:30-21:00
-                </div>
-                <div class="col-sm-9">
-                    Shuttle from VNU University of Science to Hanoi Tirant Hotel
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <h4>Wednesday, October 16th (Room 418, Building T1)</h4>
-                </div>
-                <div class="col-sm-3">
-                    08:15-08:45
-                </div>
-                <div class="col-sm-9">
-                    Shuttle from Hanoi Tirant Hotel to VNU University of Science
-                </div>
-                <div class="col-sm-3">
-                    <strong>Section 5:</strong><br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Chair: Prof. Francesca Spyrakis</strong><br>
-                </div>
-                <div class="col-sm-3">
-                    09:00-09:45<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Toan The Nguyen</strong><br>
-                    VNU University of Science , Hanoi (Vietnam)<br>
-                    <em>Machine learning approaches to computational biophysics and biomedicine at the Key Laboratory for Multiscale simulation of Complex Systems</em>
-                </div>
-                <div class="col-sm-3">
-                    09:45-10:30<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Ran Friedman</strong><br>
-                    Linnaeus University, Kalmar (Sweden)<br>
-                    <em>Computer simulations to understand drug resistance in cancer</em>
-                </div>
-                <div class="col-sm-3">
-                    10:30-10:45<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Ivy Vo</strong><br>
-                    University of Hawai‘i at Mānoa (USA)<br>
-                    <em>Enzymatic wound care revolution: Engineering SOD variants for rapid skin restoration</em>
-                </div>
-                <div class="col-sm-3">
-                    10:45-11:00<br>
-                </div>
-                <div class="col-sm-9">
-                    <strong>Paolo Carloni</strong><br>
-                    Forschungszentrüm Jülich (Germany)<br>
-                    <em>Concluding remakrs</em>
-                </div>
-                <!-- div class="col-sm-3">
-			11:30-12:00
-		</div>
-		<div class="col-sm-9">
-			Shuttle from VNU University of Science to Hanoi Tirant Hotel
-		</div -->
             </div>
         </div>
     </section>
 
-
     <section id="location" class="section location">
         <div class="container">
             <div class="row">
+                <h3 class="section-title">Venue</h3>
                 <div class="col-sm-6">
-                    <h3 class="section-title">Venue</h3>
-                    <address>
-                        <p>University of Science, Vietnam National University - Hanoi
-                            <br>334 Nguyen Trai Street, Thuong Dinh, Thanh Xuan, Hanoi, Vietnam
-                            <br>Phone: (+84) 243 858 4615
-                            <br>Email:
-                        </p>
+                    <address id="venueContent">
+
                     </address>
                 </div>
                 <div class="col-sm-6">
-                    <a
-                        href="https://www.google.com/maps/place/University+of+Science,+Vietnam+National+University+Hanoi/@20.9963586,105.8068833,18z/data=!4m6!3m5!1s0x3135acbf0df2c0e5:0xd740a66998e1a0ed!8m2!3d20.9958722!4d105.8079772!16s%2Fm%2F04gjt_4?entry=ttu">
-                        <img alt="" class="img-responsive center-block"
-                            src="../../wp-content/uploads/2024/02/HUS-map.html">
-                    </a>
+                    <div class="shadow p-1">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1862.4535766004626!2d105.8068833!3d20.9963586!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acbf0df2c0e5%3A0xd740a66998e1a0ed!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBLaG9hIGjhu41jIFThu7Egbmhpw6puLCDEkOG6oWkgaOG7jWMgUXXhu5FjIGdpYSBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1747502617837!5m2!1svi!2s" class="w-100 h-100 p-3" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -978,9 +259,47 @@
         <img src="assets/images/icons/chevron-up.svg" alt="">
     </button>
 
-    <button id="listBtn" class="btn btn-primary" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+
+    <!-- nơi hiển thị danh sách những người đã đăng ký -->
+    <button id="listBtn" class="btn btn-primary rounded list-register" data-bs-toggle="modal" data-bs-target="#listModal">
         Danh sách
     </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="listModal" tabindex="-1" aria-labelledby="listModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fs-4" id="listModalLabel">Danh sách những người đăng ký</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Affiliation</th>
+                                    <th>Address</th>
+                                    <th>Zip Code</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dataBody">
+                                <!-- dữ liệu sẽ hiện ở đây -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="site-footer">
         <div class="container">
@@ -994,135 +313,154 @@
             </div>
         </div>
     </footer>
-    <!-- Modal thông báo -->
-    <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">Thông Báo</h5>
-                    <div class="modal-body" id="modalBody">
-                        <!-- Nội dung thông báo sẽ được chèn ở đây -->
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Bảng danh sách khách mời-->
-    <div id="dataTableContainer" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; background-color: white; padding: 20px; border: 1px solid #ddd;">
-
-        <table id="dataTable" border="1">
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Affiliation</th>
-                    <th>Address</th>
-                    <th>Zip Code</th>
-
-                    <!-- Thêm các cột khác theo dữ liệu -->
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dữ liệu bảng sẽ được load vào đây -->
-            </tbody>
-        </table>
-        <button id="closeTableBtn" class="btn-close">Close</button>
-    </div>
 
     <!-- script -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            //sử lý form post data
+            $('#registration-form').on('submit', function(e) {
+                e.preventDefault();
+                const formData = $(this).serializeArray();
+                $.ajax({
+                    url: '../../controls/submit_register.php',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        const res = JSON.parse(response);
+                        showModalAlert(res.status, res.message);
+
+                        if (res.status === 'success') {
+                            $('#registration-form')[0].reset();
+                        }
+                    },
+                    error: function() {
+                        showModalAlert('danger', 'Có lỗi xảy ra. Vui lòng thử lại.');
+                    }
+                });
+            });
+
+            $('#listBtn').on('click', function() {
+                $.ajax({
+                    url: '../../controls/get_list.php',
+                    type: 'GET',
+                    success: function(data) {
+                        $('#dataBody').html(data);
+                    },
+                    error: function() {
+                        $('#dataBody').html('<tr><td colspan="7">Không thể tải dữ liệu.</td></tr>');
+                    }
+                });
+            });
+
+            function showModalAlert(type, message) {
+                const alertHtml = `
+                    <div class="alert alert-${type} alert-dismissible fade show pb-3" role="alert">
+                        <strong>${message}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>`;
+
+                $('#registration-msg').html(alertHtml).slideDown();
+
+                setTimeout(function() {
+                    $('#registration-msg .alert').alert('close');
+                }, 1000);
+            }
+
+        });
+
+        function loadHeader() {
+            $.ajax({
+                url: "../../controls/get_header.php",
+                method: "GET",
+                success: function(data) {
+                    $('#headerContent').html(data);
+                }
+            });
+
+            $.ajax({
+                url: "../../controls/get_overview_content.php",
+                method: "GET",
+                success: function(data) {
+                    $('#overviewContent').html(data);
+                }
+            });
+
+            $.ajax({
+                url: "../../controls/get_goal.php",
+                method: "GET",
+                success: function(data) {
+                    $('#goalContent').html(data);
+                }
+            });
+
+            $.ajax({
+                url: "../../controls/get_speakers.php",
+                method: "GET",
+                success: function(data) {
+                    $('#speakersContent').html(data);
+                }
+            });
+
+            $.ajax({
+                url: "../../controls/get_venue.php",
+                method: "GET",
+                success: function(data) {
+                    $('#venueContent').html(data);
+                }
+            });
+
+            $.ajax({
+                url: "../../controls/get_schedule.php",
+                method: "GET",
+                success: function(data) {
+                    $('#scheduleContent').html(data);
+                }
+            });
+
+            $.ajax({
+                url: '../../controls/get_committees.php',
+                method: 'GET',
+                success: function(data) {
+                    $('#committeesContent').html(data);
+                }
+            });
+
+            $.ajax({
+                url: '../../controls/get_overview_img.php',
+                method: 'GET',
+                success: function(data) {
+                    $('#overviewImage').html(data);
+                }
+            });
+
+            $.ajax({
+                url: "../../controls/get_background.php",
+                method: "GET",
+                success: function(data) {
+                    $('#backgroundHeader').html(data);
+                }
+            });
+
+            $.ajax({
+                url: "../../controls/get_logo.php",
+                method: "GET",
+                success: function(data) {
+                    $('#logoHeader').html(data);
+                }
+            });
+        }
+
+        loadHeader();
+
+        setInterval(loadHeader, 5000);  
+    </script>
 </body>
 
 
 
 </html>
-<script>
-    $(document).ready(function() {
-        $("#registration-form").on("submit", function(e) {
-            e.preventDefault();
-
-            var formData = $(this).serialize(); // Get data from form
-
-            $.ajax({
-                type: "POST",
-                url: "registration.php",
-                data: formData,
-                success: function(response) {
-                    $('#modalBody').text(response);
-                    $('#notificationModal').modal('show');
-                },
-                error: function() {
-
-                    alert("Data error transit");
-                }
-            });
-        });
-
-        $("#listBtn").click(function() {
-            $.ajax({
-                url: "fetchData.php",
-                type: "GET",
-                dataType: "JSON",
-                success: function(data) {
-                    var i = 1;
-                    var tableContent = "";
-                    $.each(data, function(key, value) {
-                        tableContent += '<tr>';
-                        tableContent += '<td>' + i + '</td>';
-                        tableContent += '<td>' + value.firstName + ' ' + value
-                            .lastName + '</td>';
-                        tableContent += '<td>' + value.email + '</td>';
-                        tableContent += '<td>' + value.phone + '</td>';
-                        tableContent += '<td>' + value.affiliation + '</td>';
-                        tableContent += '<td>' + value.address + '</td>';
-                        tableContent += '<td>' + value.zipCode + '</td>';
-                        // Tiếp tục với các cột khác
-                        tableContent += '</tr>';
-                        i = i + 1;
-                    });
-                    $("#dataTable tbody").html(tableContent);
-                    $("#dataTableContainer").show();
-                },
-                error: function() {
-                    alert("Have a error when get data from databases.");
-                }
-            });
-        });
-        $("#closeTableBtn").click(function() {
-            $("#dataTableContainer").hide();
-        });
-    });
-</script>
-<style>
-    #dataTableContainer {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 9999;
-        background-color: white;
-        padding: 20px;
-        border: 1px solid #ddd;
-        max-height: 70%;
-        width: 80%;
-        overflow: auto;
-    }
-
-    #dataTable {
-        width: 100%;
-        table-layout: auto;
-    }
-
-    #dataTable th,
-    #dataTable td {
-        min-width: 120px;
-        padding: 10px;
-    }
-</style>

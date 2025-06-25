@@ -1,18 +1,25 @@
+<?php
+$avatar = Session::get('adminAvatar');
+$adminName = Session::get('adminName');
+$avatarSrc = (!empty($avatar) && file_exists($avatar)) ? $avatar : 'img/default-avatar.png';
+?>
+
 <nav class="navbar bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand text-white ms-3 align-items-center" id="logo" href="index.php">
-            <img height="50px" class="me-2" src="img/logo/rinnegan-logo.webp" alt="">
+            <img height="50px" class="me-2 rounded-circle" src="<?php echo $avatarSrc; ?>" alt="">
             ADMIN PANEL
         </a>
         <form class="d-flex me-3" role="search">
             <div class="align-items-center d-flex">
                 <a class="logo-user" href="">
-                    <img height="30px" class="img-logo-user me-2" src="img/logo/unnamed.png" alt="">
+                    <img height="30px" class="img-logo-user rounded-circle me-2" src="<?php echo $avatarSrc; ?>" alt="">
                 </a>
-                <a class="text-decoration-none text-white me-4" href="">Admin <?php echo Session::get('adminName') ?></a>
+                <a class="text-decoration-none text-white me-4" href="">Admin <?php echo $adminName; ?></a>
             </div>
 
             <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#logoutModal">
+            <i class="bi bi-box-arrow-right me-2"></i>
                 LOG OUT
             </button>
 
